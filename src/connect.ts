@@ -7,14 +7,15 @@ async function connect() {
     providerAddress: rpc
   })
 
-  const [chain, nodeName, nodeVersion] = await Promise.all([
+  const [chain, nodeName, nodeVersion, genesisHash] = await Promise.all([
     gearApi.chain(),
     gearApi.nodeName(),
     gearApi.nodeVersion(),
+    gearApi.genesisHash.toHex(),
   ]);
 
   console.log(
-    `You are connected to chain ${chain} using ${nodeName} v${nodeVersion}`,
+    `You are connected to chain ${chain} using ${nodeName} v${nodeVersion}, genesisHash is${genesisHash}\n`,
   );
 
   const unsub = await gearApi.gearEvents.subscribeToNewBlocks((header) => {
