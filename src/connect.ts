@@ -15,7 +15,7 @@ async function connect() {
   ]);
 
   console.log(
-    `You are connected to chain ${chain} using ${nodeName} v${nodeVersion}, genesisHash is${genesisHash}\n`,
+    `You are connected to chain ${chain} using ${nodeName} v${nodeVersion}, genesisHash is ${genesisHash}\n`,
   );
 
   const unsub = await gearApi.gearEvents.subscribeToNewBlocks((header) => {
